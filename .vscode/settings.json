@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./src/classes"
+        "./src/classes",
+        "./src/functions"
     ]
 }

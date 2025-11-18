@@ -1,7 +1,7 @@
 import os, requests, zipfile, io
-def download_data_from_poncelet():
+import pandas as pd
+def download_data_from_poncelet(target_dir: str = "flickr_subset2") -> list[str]:
     url = "https://www.lirmm.fr/~poncelet/Ressources/flickr_subset2.zip"
-    target_dir = "flickr_subset2"
 
     # Vérifie si le dossier existe déjà
     if os.path.exists(target_dir) and os.path.isdir(target_dir):
@@ -16,8 +16,8 @@ def download_data_from_poncelet():
                 for member in zip_ref.namelist():
                     # Corrige les chemins pour ignorer un éventuel prefixe flickr_subset2/
                     member_path = member
-                    if member.startswith("flickr_subset2/"):
-                        member_path = member[len("flickr_subset2/"):]
+                    if member.startswith(target_dir+"/"):
+                        member_path = member[len(target_dir+"/"):]
                     target_path = os.path.join(target_dir, member_path)
 
                     # Si c'est un répertoire, on le crée
@@ -30,3 +30,5 @@ def download_data_from_poncelet():
             print(f"Données extraites dans : {target_dir}")
         else:
             print("Échec du téléchargement. Code HTTP :", response.status_code)
+    df = pd.read_csv("flickr_subset2/captions.csv")
+    return df
