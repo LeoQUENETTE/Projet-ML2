@@ -5,9 +5,7 @@ def download_data_from_poncelet(target_dir: str = "flickr_subset2") -> pd.DataFr
     url = "https://www.lirmm.fr/~poncelet/Ressources/flickr_subset2.zip"
 
     # Check if data already exists
-    if os.path.exists(target_dir) and os.path.isdir(target_dir):
-        print("Données déjà disponibles dans :", target_dir)
-    else:
+    if not (os.path.exists(target_dir) and os.path.isdir(target_dir)):
         print("Téléchargement de flickr_subset2.zip...")
         response = requests.get(url)
         if response.status_code == 200:
@@ -29,9 +27,10 @@ def download_data_from_poncelet(target_dir: str = "flickr_subset2") -> pd.DataFr
             print(f"Données extraites dans : {target_dir}")
         else:
             print("Échec du téléchargement. Code HTTP :", response.status_code)
-            return None  # Return None if download failed
+            return None
+    else:
+        print("Données déjà disponibles dans :", target_dir)
     
     # Read and return the CSV
     csv_path = os.path.join(target_dir, "captions.csv")
-    df = pd.read_csv(csv_path)
-    return df  # This returns the DataFrame
+    return pd.read_csv(csv_path)
