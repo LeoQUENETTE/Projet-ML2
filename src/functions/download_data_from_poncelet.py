@@ -1,6 +1,6 @@
 import os, requests, zipfile, io
 import pandas as pd
-def download_data_from_poncelet(target_dir: str = "flickr_subset2") -> list[str]:
+def download_data_from_poncelet(target_dir: str = "flickr_subset2") -> any:
     url = "https://www.lirmm.fr/~poncelet/Ressources/flickr_subset2.zip"
 
     # Vérifie si le dossier existe déjà
