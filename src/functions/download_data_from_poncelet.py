@@ -1,5 +1,5 @@
 import os, requests, zipfile, io
-def get_data():
+def download_data_from_poncelet():
     url = "https://www.lirmm.fr/~poncelet/Ressources/flickr_subset2.zip"
     target_dir = "flickr_subset2"
 
