@@ -11,3 +11,5 @@ def create_x_y(sequence_length : int, df : any):
     X = pad_sequences(sequences, maxlen=max_len, padding="post")
     y = np.array(df['label'])
     return X, y
+def test():
+    print("test")
