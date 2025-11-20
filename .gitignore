@@ -1,2 +1,6 @@
 __pycache__/*
 __pycache__
+src/functions/__pycache__/*
+src/classes/__pycache__/*
+src/models_forclip/__pycache__/*
+test/__pycache__/*
