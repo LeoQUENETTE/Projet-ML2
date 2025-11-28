@@ -16,3 +16,7 @@ Si l'extension ne veut pas s'installer c'est qu'il faut mettre à jour VsCode :
    1) Utilisation de loss_contrastive (code donné)
    2) Important de sauvegarder le modèle
 3) Faites de l'inférence, test à la mano
+
+## Documentation
+
+https://learnopencv.com/clip-model/
