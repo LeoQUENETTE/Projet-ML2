@@ -1,7 +1,8 @@
-from src.classes.UsefullClasses import PositionalEmbedding
+from UsefullClasses import PositionalEmbedding
 from TransformerBlock import TransformerBlock
 from tensorflow.keras import layers
 from tensorflow.keras.utils import register_keras_serializable
+from tensorflow import keras
 @register_keras_serializable()
 class SmallBERT(keras.Model):
     def __init__(self, sequence_length, vocab_size, embed_dim, num_heads, ff_dim, num_layers, **kwargs):
