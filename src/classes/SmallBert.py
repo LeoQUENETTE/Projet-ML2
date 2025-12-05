@@ -1,4 +1,4 @@
-from UsefullClasses import PositionalEmbedding
+from src.classes.UsefullClasses import PositionalEmbedding
 from TransformerBlock import TransformerBlock
 from tensorflow.keras import layers
 from tensorflow.keras.utils import register_keras_serializable
