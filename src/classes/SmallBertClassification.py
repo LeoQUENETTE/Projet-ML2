@@ -3,20 +3,20 @@ from tensorflow.keras.utils import register_keras_serializable
 from src.classes.SmallBert import SmallBERT
 import tensorflow as tf
 from tensorflow import keras
-@tf.keras.saving.register_keras_serializable()
+@tf.keras.utils.register_keras_serializable()
 class SmallBERTForClassification(keras.Model):
     def __init__(self, sequence_length, vocab_size, embed_dim, num_heads, ff_dim, num_layers, dropout_rate = 0.3,**kwargs):
         super().__init__(**kwargs)
         self.encoder = SmallBERT(sequence_length, vocab_size, embed_dim, num_heads, ff_dim, num_layers)
 
-        self.dropout = layers.Dropout(dropout_rate)
-        self.dense = layers.Dense(128, activation="relu")
-        self.batch_norm = layers.BatchNormalization()
+        self.dropout = layers.Dropout(dropout_rate, name="dropout_nb1")
+        self.dense = layers.Dense(128, activation="relu", name="dense_nb1")
+        self.batch_norm = layers.BatchNormalization(name="batch_nb1")
 
-        self.dropout2 = layers.Dropout(dropout_rate)
-        self.dense2 = layers.Dense(64, activation="relu")
+        self.dropout2 = layers.Dropout(dropout_rate, name="dropout_nb2")
+        self.dense2 = layers.Dense(64, activation="relu", name="dense_nb2")
 
-        self.output_layer = layers.Dense(4, activation="softmax")
+        self.output_layer = layers.Dense(4, activation="softmax", name="dense_nb1")
         self.dropout_rate = dropout_rate
 
     def call(self, inputs, training=False):
